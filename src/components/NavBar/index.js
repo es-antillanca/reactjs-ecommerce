@@ -40,10 +40,10 @@ export default function NavBar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Iniciar</Link>
+          <Link href="#" className="text-sm">Iniciar</Link>
         </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+        <NavbarItem className="hidden lg:flex">
+          <Button as={Link} color="warning" size="sm" href="#" variant="flat">
             Regístrate
           </Button>
         </NavbarItem>
@@ -58,12 +58,26 @@ export default function NavBar() {
             <Link
               className="w-full text-foreground"
               href="#"
-              size="lg"
+              size="md"
             >
               {item}
             </Link>
           </NavbarMenuItem>
         ))}
+        <NavbarMenuItem><Link
+              className="w-full text-primary"
+              href="#"
+              size="md"
+            >
+              Iniciar
+        </Link></NavbarMenuItem>
+        <NavbarMenuItem><Link
+              className="w-full text-warning"
+              href="#"
+              size="md"
+            >
+              Regístrate
+            </Link></NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
