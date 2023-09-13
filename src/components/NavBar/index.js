@@ -1,17 +1,38 @@
 import { useState } from "react";
 import Logo from "../Logo";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button,NavbarMenuToggle,NavbarMenu,
-  NavbarMenuItem} from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
 
-import CartWidget from "./../CartWidget"
+import CartWidget from "./../CartWidget";
+
 
 export default function NavBar() {
+
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    "Celulares",
-    "Computadores",
-    "Accesorios"
+    {
+      href: '/category/smartphones',
+      label: 'Celulares'
+    },
+    {
+      href: '/category/laptos',
+      label: 'Notebooks'
+    },
+    {
+      href: '/category/accesories',
+      label: 'Accesorios'
+    }
   ];
 
   return (
@@ -27,27 +48,26 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {menuItems.map(
-          (item) => (
-        <NavbarItem key={item}>
-          <Link color="foreground" href="#" className="text-sm font-medium">
-           {item}
-          </Link>
-        </NavbarItem>
-          )
-        )}
-
+        {menuItems.map(({label,href}) => (
+          <NavbarItem key={href}>
+            <Link color="foreground" href={href} className="text-sm font-medium">
+              {label}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#" className="text-sm">Iniciar</Link>
+          <Link href="#" className="text-sm">
+            Iniciar
+          </Link>
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">
           <Button as={Link} color="warning" size="sm" href="#" variant="flat">
             Regístrate
           </Button>
         </NavbarItem>
-      <NavbarItem >
+        <NavbarItem>
           <CartWidget />
         </NavbarItem>
       </NavbarContent>
@@ -55,29 +75,21 @@ export default function NavBar() {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full text-foreground"
-              href="#"
-              size="md"
-            >
+            <Link className="w-full text-foreground" href="#" size="md">
               {item}
             </Link>
           </NavbarMenuItem>
         ))}
-        <NavbarMenuItem><Link
-              className="w-full text-primary"
-              href="#"
-              size="md"
-            >
-              Iniciar
-        </Link></NavbarMenuItem>
-        <NavbarMenuItem><Link
-              className="w-full text-warning"
-              href="#"
-              size="md"
-            >
-              Regístrate
-            </Link></NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link className="w-full text-primary" href="#" size="md">
+            Iniciar
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link className="w-full text-warning" href="#" size="md">
+            Regístrate
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
