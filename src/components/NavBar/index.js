@@ -26,12 +26,12 @@ export default function NavBar() {
       label: 'Celulares'
     },
     {
-      href: '/category/laptos',
+      href: '/category/laptops',
       label: 'Notebooks'
     },
     {
-      href: '/category/accesories',
-      label: 'Accesorios'
+      href: '/category/home-decoration',
+      label: 'Decoración'
     }
   ];
 

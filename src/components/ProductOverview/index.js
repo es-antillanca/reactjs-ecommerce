@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/react'
-import { Star, StarIcon } from 'lucide-react'
+import { Star } from 'lucide-react'
 
 
 function classNames(...classes) {

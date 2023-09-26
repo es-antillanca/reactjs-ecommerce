@@ -575,7 +575,7 @@ export const products = [
   },
 ];
 
-export const getProducts = () => {
+export function getProducts() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(products);
@@ -583,7 +583,7 @@ export const getProducts = () => {
   });
 };
 
-export function getDetailProduct( productId ){
+export function getDetailProduct(productId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const product = products.find((product) => product.id === productId);
@@ -592,6 +592,19 @@ export function getDetailProduct( productId ){
       } else {
         reject(new Error(`Producto con id ${productId} no encontrado.`));
       }
-    }, 3000);
+    }, 2000);
+  })
+};
+
+export function getProductByCategory(category){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const items = products.filter((items) => items.category === category)
+      if (items) {
+        resolve(items)
+      } else {
+        reject(new Error(`No encontramos productos para la categía seleccionada`))
+      }
+    }, 2000)
   })
 }
